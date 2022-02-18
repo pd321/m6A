@@ -4,7 +4,7 @@ rule trimgalore:
 	output:
 		temp(["results/bam/{sample}_val_1.fq.gz", "results/bam/{sample}_val_2.fq.gz"])
 	conda:
-		"envs/trimgalore.yaml"
+		"../envs/trimgalore.yaml"
 	log:
 		"logs/trimgalore/{sample}.log"
 	params:
@@ -32,16 +32,15 @@ rule fastqc:
 		zip="results/qc/fastqc/{sample}_{group}_fastqc.zip"
 	threads: threads_mid
 	wrapper:
-		"1.1.0/bio/fastqc"
+		"v1.1.0/bio/fastqc"
 
 rule multiqc:
 	input:
-		expand(["results/qc/fastqc/{sample}_{group}_fastqc.html", 
-			"results/counts/{sample}/abundance.tsv"], group=["r1", "r2"], sample = samples)
+		expand(["results/qc/fastqc/{sample}_{group}_fastqc.html", "results/bw/{sample}.bw"], group=["r1", "r2"], sample = samples)
 	output:
 		report("results/qc/multiqc/multiqc_report.html", caption="report/multiqc.rst", category="Quality control")
 	conda:
-		"envs/multiqc.yaml"
+		"../envs/multiqc.yaml"
 	threads: threads_high
 	log:
 		"logs/multiqc/multiqc.log"

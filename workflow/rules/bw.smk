@@ -4,7 +4,7 @@ rule wig2bigwig:
 	output:
 		"results/bw/{sample}.bw"
 	conda:
-		"envs/ucsc-wigtobigwig.yaml"
+		"../envs/ucsc-wigtobigwig.yaml"
 	params:
 		chrom_sizes = config['chrom_sizes']
 	shell:

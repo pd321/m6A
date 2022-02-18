@@ -6,5 +6,5 @@ include: "rules/align.smk"
 include: "rules/bw.smk"
 
 rule all:
-    input:
-        expand("results/bw/{sample}.bw", sample = samples) + ["results/qc/multiqc/multiqc_report.html"]
+	input:
+		expand("results/bw/{sample}.bw", sample = samples) + ["results/qc/multiqc/multiqc_report.html"]

@@ -7,8 +7,8 @@ rule star:
 		bam = "results/bam/{sample}/{sample}.Aligned.sortedByCoord.out.bam"
 	threads: 
 		threads_high
-    conda:
-		"envs/star.yaml"
+	conda:
+		"../envs/star.yaml"
 	params:
 		genome = config['star']['star_genome'],
 		date = time.strftime("%Y-%m-%d")
