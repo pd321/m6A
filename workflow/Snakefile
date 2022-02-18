@@ -1,4 +1,10 @@
-# Main entrypoint of the workflow. 
-# Please follow the best practices: 
-# https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
-# in particular regarding the standardized folder structure mentioned there. 
+configfile: "config/config.yaml"
+
+include: "rules/common.smk"
+include: "rules/qc.smk"
+include: "rules/align.smk"
+include: "rules/bw.smk"
+
+rule all:
+    input:
+        expand("results/bw/{sample}.bw", sample = samples) + ["results/qc/multiqc/multiqc_report.html"]

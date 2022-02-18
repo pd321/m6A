@@ -1,0 +1,9 @@
+chrom_sizes: 'data/external/ref/fa/genome.chrom.sizes'
+
+trimgalore:
+  quality: 0
+  stringency: 5
+  e: 0.1
+
+star:
+  star_genome: 'data/external/ref/idx/star/100'
